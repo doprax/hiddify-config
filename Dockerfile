@@ -12,4 +12,6 @@ COPY . .
 # RUN mkdir -p ~/.ssh && echo "StrictHostKeyChecking no " > ~/.ssh/config
 RUN bash install.sh install-docker
 RUN curl -L https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py -o /usr/bin/systemctl
+EXPOSE 80
+EXPOSE 443
 ENTRYPOINT ["/bin/bash","-c", "./apply_configs.sh && tail -f /opt/hiddify-config/log/system/*"]
